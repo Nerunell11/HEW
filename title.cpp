@@ -29,6 +29,8 @@ void	DrawTitle()
 {
 	//文字の表示色を変更
 	textcolor(WHITE);
-	gotoxy(50, 10);
-	std::cout << "タイトルです　Press Enter Key";
+	gotoxy(35, 10);
+	std::cout << "登れえぇぇぇ!!!!\n";
+	gotoxy(35,12);
+	std::cout << "Press Enter Key...\n";
 }
