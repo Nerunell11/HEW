@@ -3,8 +3,6 @@
 
 #include	"game.h"
 #include	"Player.h"
-#include	"enemy.h"
-#include	"bullet.h"
 #include	"field.h"
 #include	"item.h"
 
@@ -15,8 +13,6 @@ void	InitGame()
 	clrscr();
 
 	InitPlayer();
-	InitEnemy();
-	InitBullet();
 	InitField();
 	InitItem();
 
@@ -25,8 +21,6 @@ void	InitGame()
 void	FinalizeGame()
 {
 	FinalizePlayer();
-	FinalizeEnemy();
-	FinalizeBullet();
 	FinalizeField();
 	FinalizeItem();
 
@@ -35,8 +29,6 @@ void	UpdateGame()
 {
 
 	UpdatePlayer();
-	UpdateEnemy();
-	UpdateBullet();
 	UpdateField();
 	UpdateItem();
 
@@ -52,8 +44,6 @@ void	DrawGame()
 	DrawField();
 	DrawItem();
 	DrawPlayer();
-	DrawEnemy();
-	DrawBullet();
 
 	//ï∂éöÇÃï\é¶êFÇïœçX
 	textcolor(WHITE);

@@ -1,7 +1,7 @@
 
 #include	"collision.h"
 #include	"Player.h"
-#include	"bullet.h"
+
 
 
 OBJECT		Player;				//プレイヤー構造体
@@ -73,19 +73,6 @@ void	UpdatePlayer()		//更新処理
 		Player.PositionY = SCREEN_LIMIT_DOWN;	//座標の補正
 		Player.VelocityY = 0.0f;
 	}
-
-
-	//下キーで弾を撃つ
-	if (IsKeyTrigger(PPK_DOWN))
-	{
-		//プレイヤーの向いている方向へ弾を出すには？
-		CreateBullet(Player.PositionX, Player.PositionY, BULLET_SPEED, 0.0f);
-
-	}
-
-
-
-
 }
 void	DrawPlayer()		//描画
 {
