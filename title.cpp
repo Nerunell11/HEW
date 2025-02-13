@@ -30,7 +30,7 @@ void	DrawTitle()
 	//•¶š‚Ì•\¦F‚ğ•ÏX
 	textcolor(WHITE);
 	gotoxy(35, 10);
-	std::cout << "‚¤‚ñ‚¿\n";
+	std::cout << "“o‚ê‚¦‚¥‚¥‚¥‚¥\n";
 	gotoxy(35,12);
 	std::cout << "Press Enter Key...\n";
 }
