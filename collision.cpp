@@ -4,48 +4,7 @@
 #include	"collision.h"
 #include	"Player.h"
 #include	"field.h"
-#include	"enemy.h"
 
-//弾１つ　対　敵全部
-// bullet=弾構造体ポインター
-bool	CollisonBulletEnemy(OBJECT* bullet)
-{
-	if (bullet->Use == true)
-	{
-		 //弾の左上の座標
-		float	L1x = bullet->PositionX - (bullet->Width / 2);
-		float	L1y = bullet->PositionY - (bullet->Height / 2);
-
-		//敵構造体のポインター取得
-		OBJECT* enemy = GetEnemy();
-		for (int i = 0; i < ENEMY_MAX; i++)
-		{
-			if (enemy[i].Use == true)
-			{	//敵の左上座標
-				float	L2x = enemy[i].PositionX - (enemy[i].Width / 2);
-				float	L2y = enemy[i].PositionY - (enemy[i].Height / 2);
-				bool ret = CollisionBoxBox(L1x, L1y, bullet->Width, bullet->Height,
-											L2x, L2y, enemy[i].Width, enemy[i].Height);
-				if (ret == true)
-				{
-					//敵を消滅 << 敵を消滅モードへ切り替えるのが通常
-					enemy[i].Use = false;
-					gotoxy(enemy[i].PositionXOld, enemy[i].PositionYOld);
-					std::cout << " ";
-
-					//弾を消滅 << 弾を消滅モードへ切り替えるのが通常
-					bullet->Use = false;
-					gotoxy(bullet->PositionXOld, bullet->PositionYOld);
-					std::cout << " ";
-					return true;
-				}
-			}
-
-		}
-
-	}
-	return false;
-}
 
 //プレイヤー　対　足場
 //px, py フィールドにぶつかっているかを調べたい座標
