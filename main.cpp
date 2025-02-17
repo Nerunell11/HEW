@@ -21,6 +21,7 @@
 DWORD dwMode_default;  // コンソールのデフォルト状態を保持する変数
 
 // Function prototype declarations
+// 
 bool HEWStartup();
 bool HEWCleanup();
 //===============ここまで===============================
@@ -278,15 +279,13 @@ void	SetScene(GAMESCENE scene)
 {
 	g_SceneNext = scene;
 }
+
+
 //シーンの取得
 GAMESCENE GetScene()
 {
 	return g_Scene;
 }
-
-//1/17にちここまで
-//シーン切り替え処理作成
-
 
 #ifdef _DEBUG
 // =============================================================================
@@ -304,17 +303,3 @@ void DispFPS(void)
 	textcolor(WHITE);
 }
 #endif
-
-
-
-/*
-
-
-		WASDキーでPを自由に動かせるようになったら
-		エネミーを増やしてみよう。
-		・Enemyを配列化してループで処理する
-		・初期化時にVelocityにセットする値に乱数を混ぜてやる（1匹ずつ異なる動きにする）
-
-		これもできちゃったら自分で何かチャレンジしてみて。
-
-*/
