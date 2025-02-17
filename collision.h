@@ -11,13 +11,6 @@
 //
 bool	CollisionPlayerField(float px, float py);
 
-//弾１つ　対　敵全部
-// bullet=弾構造体ポインター
-bool	CollisonBulletEnemy(OBJECT* bullet);
-
-
-
-
 
 //衝突判定
 //点と矩形
