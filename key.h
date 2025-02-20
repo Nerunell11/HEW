@@ -13,8 +13,6 @@ enum
 	PPK_LEFT,
 	PPK_RIGHT,
 	PPK_ENTER,
-	PPK_SPACE,
-	PPK_ESC,
 	PPK_W,
 	PPK_A,
 	PPK_S,
