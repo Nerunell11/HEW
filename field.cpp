@@ -15,8 +15,8 @@ OBJECT	field[FIELD_MAX];
 float	MapData[][4] =
 {
 	{SCREEN_LIMIT_LEFT, SCREEN_LIMIT_DOWN, 80, 1},//’n–Ê
-	{50, 23, 8, 1},
-	{40, 20, 8, 1},
+	/*{50, 23, 8, 1},
+	{40, 20, 8, 1},*/
 
 
 

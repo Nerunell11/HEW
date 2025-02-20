@@ -4,8 +4,6 @@
 #include	"game.h"
 #include	"Player.h"
 #include	"field.h"
-#include	"item.h"
-
 
 void	InitGame()
 {
@@ -14,7 +12,6 @@ void	InitGame()
 
 	InitPlayer();
 	InitField();
-	InitItem();
 
 
 }
@@ -22,7 +19,6 @@ void	FinalizeGame()
 {
 	FinalizePlayer();
 	FinalizeField();
-	FinalizeItem();
 
 }
 void	UpdateGame()
@@ -30,7 +26,6 @@ void	UpdateGame()
 
 	UpdatePlayer();
 	UpdateField();
-	UpdateItem();
 
 	//キー入力待ち
 	if (IsKeyRelease(PPK_ENTER))
@@ -42,7 +37,6 @@ void	UpdateGame()
 void	DrawGame()
 {
 	DrawField();
-	DrawItem();
 	DrawPlayer();
 
 	//文字の表示色を変更
