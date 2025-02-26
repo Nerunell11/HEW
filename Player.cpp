@@ -97,28 +97,30 @@ void PlayerCheck()
     if (IsKeyRelease(PPK_W) || IsKeyRelease(PPK_UP))
     {
         Player.Mode = PLAYER_MOVE;
-        Player.PositionY -= 1.0f;
+        Player.PositionY -= 2.0f;
         std::cout << "Move up\n"; // デバッグ用
     }
     // 左方向
     else if (IsKeyRelease(PPK_A) || IsKeyRelease(PPK_LEFT))
     {
         Player.Mode = PLAYER_MOVE;
-        Player.PositionX -= 1.0f;
+        Player.PositionX -= 2.0f;
+		Player.PositionY -= 2.0f;
         std::cout << "Move left\n"; // デバッグ用
     }
     // 右方向
     else if (IsKeyRelease(PPK_D) || IsKeyRelease(PPK_RIGHT))
     {
         Player.Mode = PLAYER_MOVE;
-        Player.PositionX += 1.0f;
+        Player.PositionX += 2.0f;
+		Player.PositionY -= 2.0f;
         std::cout << "Move right\n"; // デバッグ用
     }
     // 下方向
     else if (IsKeyRelease(PPK_S) || IsKeyRelease(PPK_DOWN))
     {
         Player.Mode = PLAYER_MOVE;
-        Player.PositionY += 1.0f;
+        Player.PositionY += 2.0f;
         std::cout << "Move down\n"; // デバッグ用
     }
     // 何も押されていない
