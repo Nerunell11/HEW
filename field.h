@@ -5,7 +5,7 @@
 #define		CONIOEX
 #include	"common.h"
 
-#define		FIELD_MAX	(100)
+#define		FIELD_MAX	(200)
 
 
 //プロトタイプ宣言

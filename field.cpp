@@ -14,13 +14,19 @@ OBJECT	field[FIELD_MAX];
 //
 float	MapData[][4] =
 {
+	//X座標, Y座標, 横幅, 縦幅
 	{SCREEN_LIMIT_LEFT, SCREEN_LIMIT_DOWN, 80, 1},//地面
-	/*{50, 23, 8, 1},
-	{40, 20, 8, 1},*/
+	{SCREEN_LIMIT_LEFT, SCREEN_LIMIT_UP, 80, 1},//天井
+	{SCREEN_LIMIT_RIGHT,1,1,24},
+	{SCREEN_LIMIT_LEFT,1,1,24},
+	{38, 22, 1, 1},
+	{40, 20, 1, 1},
 
 
+	
 
 
+	
 	{-1,-1,-1,-1}	//データの終端
 };
 
