@@ -11,16 +11,18 @@ OBJECT	field[FIELD_MAX];
 //
 // 左上座標　　サイズ
 //Posx, PosY, Width, Height
-//
+
+//フィールド二次元配列
 float	MapData[][4] =
 {
 	//X座標, Y座標, 横幅, 縦幅
-	{SCREEN_LIMIT_LEFT, SCREEN_LIMIT_DOWN, 80, 1},//地面
-	{SCREEN_LIMIT_LEFT, SCREEN_LIMIT_UP, 80, 1},//天井
-	{SCREEN_LIMIT_RIGHT,1,1,24},				//右壁
-	{SCREEN_LIMIT_LEFT,1,1,24},					//左壁
-	{38, 22, 1, 1},
-	{40, 20, 1, 1},
+	{WORLD_LIMIT_LEFT,WORLD_LIMIT_DOWN, 80, 1},//地面
+	{WORLD_LIMIT_LEFT,WORLD_LIMIT_UP, 80, 1},  //天井
+	{WORLD_LIMIT_RIGHT,1,1,24},				  //右壁
+	{WORLD_LIMIT_LEFT,1,1,24},				  //左壁
+
+	
+
 
 
 	
@@ -34,25 +36,74 @@ float	MapData[][4] =
 
 
 //初期化
-void	InitField()
+void InitField()
 {
+	
+
 	for (int i = 0; i < FIELD_MAX; i++)
 	{
 		field[i].Use = false;
 	}
 
-	//足場を作成
-	int	i = 0;
+	// 足場を作成
+	int i = 0;
 	while (MapData[i][0] != -1)
 	{
 		CreateField(MapData[i][0], MapData[i][1], MapData[i][2], MapData[i][3]);
 		i++;
-	};
+	}
+
+	// ランダムにフィールド要素を生成
+	int RandomFieldX = (SCREEN_LIMIT_RIGHT / 2);
+	int RandomFieldY = (WORLD_LIMIT_DOWN - 3);
+	int RandomFieldWidth = 1;
+	int RandomFieldHeight = 1;
+
+	int RandomFieldXOld = RandomFieldX;
+	int RandomFieldYOld = RandomFieldY;
+	int RandomFieldWidthOld = RandomFieldWidth;
+	int RandomFieldHeightOld = RandomFieldHeight;
+
+	for (int k = 0; k < WORLD_LIMIT_DOWN / 3; k++)//　=
+		//
+		//  P
+		//  =
+	{
+
+		//天井を超える場合は終了
+		//上が1 下が200
+		if (WORLD_LIMIT_UP > RandomFieldY)
+		{
+			break;
+		}
+		// 乱数のシードを初期化
+		std::srand(static_cast<unsigned int>(std::time(nullptr)));
+		int random = 0;
+		random = static_cast<float>((std::rand() % 3) + 1); // 1から3の範囲でランダム
+
+		//右上チェック
+		
+			
 
 
 
 
-}
+
+
+
+
+			
+
+			float x = RandomFieldX;
+			float y = RandomFieldY;
+			float w = RandomFieldWidth;
+			float h = RandomFieldHeight;
+
+			CreateField(x, y, w, h);
+		}
+	}
+
+
 
 //終了処理
 void	FinalizeField()
