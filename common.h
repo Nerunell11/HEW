@@ -13,6 +13,8 @@
 #include <iomanip>
 #include <stdlib.h>
 #include <time.h>
+#include <cstdlib>
+#include <ctime>
 
 
 #include	"key.h"	//キー入力処理
@@ -42,6 +44,12 @@ enum GAMESCENE
 #define	SCREEN_LIMIT_DOWN	(24)
 #define	SCREEN_LIMIT_LEFT	(1)
 #define	SCREEN_LIMIT_RIGHT	(80)
+
+//ワールドの端を表す座標を定義
+#define WORLD_LIMIT_UP		(1)
+#define WORLD_LIMIT_DOWN	(102)
+#define WORLD_LIMIT_LEFT	(1)
+#define WORLD_LIMIT_RIGHT	(80)
 
 
 

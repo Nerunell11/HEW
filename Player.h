@@ -7,7 +7,7 @@
 
 //プレイヤーのスタート位置
 #define	PLAYER_START_POSX	(SCREEN_LIMIT_RIGHT  / 2)
-#define PLAYER_START_POSY	(SCREEN_LIMIT_DOWN - 1)
+#define PLAYER_START_POSY	(WORLD_LIMIT_DOWN - 1)
 
 //プレイヤーの状態
 enum PLAYERMODE
