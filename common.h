@@ -21,7 +21,6 @@
 #include    "sound.h"
 //#include	"collision.h"
 
-
 //ゲームシーンの定義
 enum GAMESCENE
 {
@@ -46,10 +45,10 @@ enum GAMESCENE
 #define	SCREEN_LIMIT_RIGHT	(80)
 
 //ワールドの端を表す座標を定義
-#define WORLD_LIMIT_UP		(1)
+#define WORLD_LIMIT_UP		(0)
 #define WORLD_LIMIT_DOWN	(102)
 #define WORLD_LIMIT_LEFT	(1)
-#define WORLD_LIMIT_RIGHT	(80)
+#define WORLD_LIMIT_RIGHT	(79)
 
 
 
