@@ -189,11 +189,6 @@ void WindowConsoleInitialize(void)
 void	Init()
 {
 
-	// コンソールでマウスの情報を取得するために下記が必要
-	const HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);GetConsoleMode(hStdin, &dwMode_default); 
-	// 終了時にデフォルト状態に戻すため、デフォルトの情報を保持
-	SetConsoleMode(hStdin, ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT | ENABLE_EXTENDED_FLAGS); // マウス入力可否設定
-
 	if (g_Scene != g_SceneNext)	//シーン遷移のリクエストチェック
 	{
 		Uninit();				//現在のシーンを終了
@@ -209,8 +204,7 @@ void	Init()
 			case SCENE_RESULT:
 				InitResult();	break;
 		}
-		// マウス入力可否を元に戻す
-		SetConsoleMode(hStdin, dwMode_default);
+		
 	}
 
 

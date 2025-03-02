@@ -1,6 +1,7 @@
 // Player.cpp
 
 #include "Player.h"
+#include "camera.h"
 #include "common.h" // 共通ヘッダファイル
 #include <iostream> // デバッグ用
 
@@ -72,15 +73,27 @@ void UpdatePlayer() // 更新処理
 
 void DrawPlayer() // 描画
 {
-    // 前回のプレイヤーを消去
-    // 画面の座標はint型なので、型変換を行って表示座標を設定する
-    gotoxy((int)Player.PositionXOld, (int)Player.PositionYOld);
-    std::cout << " "; // 設定した座標にスペースを表示して消去する
-    // 文字の表示色を変更
-    textcolor(RED); // 文字を赤に変更
-    // 現在のプレイヤーを表示
-    gotoxy((int)Player.PositionX, (int)Player.PositionY);
-    std::cout << "P"; // とりあえずP
+    OBJECT* camera = GetCamera(); // カメラの位置を取得
+
+    // カメラの範囲内にプレイヤーがいるか確認
+    int relativePosX = (int)(Player.PositionX - camera->PositionX);
+    int relativePosY = (int)(Player.PositionY - camera->PositionY);
+    int relativePosXOld = (int)(Player.PositionXOld - camera->PositionX);
+    int relativePosYOld = (int)(Player.PositionYOld - camera->PositionY);
+
+    if (relativePosX >= 0 && relativePosX < CAMERA_WIDTH && relativePosY >= 0 && relativePosY < CAMERA_HEIGHT)
+    {
+        // 前回のプレイヤーを消去
+        gotoxy(relativePosXOld, relativePosYOld);
+        std::cout << " "; // 設定した座標にスペースを表示して消去する
+
+        // 文字の表示色を変更
+        textcolor(RED); // 文字を赤に変更
+
+        // 現在のプレイヤーを表示
+        gotoxy(relativePosX, relativePosY);
+        std::cout << "P"; // とりあえずP
+    }
 
     Player.PositionXOld = Player.PositionX; // 現在の座標を保存
     Player.PositionYOld = Player.PositionY;
@@ -104,7 +117,7 @@ void PlayerCheck()
     else if (IsKeyRelease(PPK_A) || IsKeyRelease(PPK_LEFT))
     {
         Player.Mode = PLAYER_MOVE;
-        Player.PositionX -= 2.0f;
+        Player.PositionX -= 1.0f;
 		Player.PositionY -= 2.0f;
         std::cout << "Move left\n"; // デバッグ用
     }
@@ -112,7 +125,7 @@ void PlayerCheck()
     else if (IsKeyRelease(PPK_D) || IsKeyRelease(PPK_RIGHT))
     {
         Player.Mode = PLAYER_MOVE;
-        Player.PositionX += 2.0f;
+        Player.PositionX += 1.0f;
 		Player.PositionY -= 2.0f;
         std::cout << "Move right\n"; // デバッグ用
     }
