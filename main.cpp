@@ -6,6 +6,7 @@
 #include	"title.h"
 #include	"game.h"
 #include	"result.h"
+#include	"gameover.h"
 //==================================================
 //Libraryフォルダーをmain.cppと同じフォルダ階層へコピーした後
 //自分のmain.cppへここを追加
@@ -201,6 +202,8 @@ void	Init()
 				InitTitle();	break;
 			case SCENE_GAME:
 				InitGame();		break;
+			case SCENE_GAMEOVER:
+				InitGameOver();	break;
 			case SCENE_RESULT:
 				InitResult();	break;
 		}
@@ -221,6 +224,8 @@ void	Uninit()
 			FinalizeTitle();	break;
 		case SCENE_GAME:
 			FinalizeGame();		break;
+		case SCENE_GAMEOVER:
+			FinalizeGameOver();	break;
 		case SCENE_RESULT:
 			FinalizeResult();	break;
 	}
@@ -240,7 +245,9 @@ void	Update()
 		case SCENE_TITLE:
 			UpdateTitle();	break;
 		case SCENE_GAME:
-			UpdateGame();		break;
+			UpdateGame();	break;
+		case SCENE_GAMEOVER:
+			UpdateGameOver();	break;
 		case SCENE_RESULT:
 			UpdateResult();	break;
 	}
@@ -258,6 +265,8 @@ void	Draw()
 			DrawTitle();	break;
 		case SCENE_GAME:
 			DrawGame();		break;
+		case SCENE_GAMEOVER:
+			DrawGameOver();	break;
 		case SCENE_RESULT:
 			DrawResult();	break;
 	}
