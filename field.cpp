@@ -12,12 +12,12 @@ OBJECT field[FIELD_MAX];
 // フィールド二次元配列
 float MapData[][4] =
 {
-   {WORLD_LIMIT_LEFT, WORLD_LIMIT_UP, 80, 1},   // 天井
-   {WORLD_LIMIT_LEFT, WORLD_LIMIT_DOWN, 80, 1}, // 地面
+   //{WORLD_LIMIT_LEFT, WORLD_LIMIT_UP, 80, 1},   // 天井
+   //{WORLD_LIMIT_LEFT, WORLD_LIMIT_DOWN, 80, 1}, // 地面
 
 
-   {WORLD_LIMIT_RIGHT, 1, 1, 24},               // 右壁
-   {WORLD_LIMIT_LEFT, 1, 1, 24},                // 左壁
+   //{WORLD_LIMIT_RIGHT, 1, 1, 24},               // 右壁
+   //{WORLD_LIMIT_LEFT, 1, 1, 24},                // 左壁
     {-1, -1, -1, -1}                             // データの終端
 };
 
