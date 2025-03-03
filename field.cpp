@@ -37,37 +37,68 @@ void InitField()
         i++;
     }
 
-    // ランダムにフィールド要素を生成
+	// ランダムな足場を作成
 
-    //int RandomFieldX = (SCREEN_LIMIT_RIGHT / 2);
-    //int RandomFieldY = (WORLD_LIMIT_DOWN - 3);
-    //int RandomFieldWidth = 1;
-    //int RandomFieldHeight = 1;
+    int RandomFieldX = 40;
+	int RandomFieldY = 24;
+    int RandomFieldWidth = 1;
+    int RandomFieldHeight = 1;
 
-    //int RandomFieldXOld = RandomFieldX;
-    //int RandomFieldYOld = RandomFieldY;
-    //int RandomFieldWidthOld = RandomFieldWidth;
-    //int RandomFieldHeightOld = RandomFieldHeight;
 
-    //for (int k = 0; k < WORLD_LIMIT_DOWN / 3; k++) // =
-    //{
-    //    // 天井を超える場合は終了
-    //    if (WORLD_LIMIT_UP > RandomFieldY)
-    //    {
-    //        break;
-    //    }
-    //    // 乱数のシードを初期化
-    //    std::srand(static_cast<unsigned int>(std::time(nullptr)));
-    //    int random = 0;
-    //    random = static_cast<float>((std::rand() % 3) + 1); // 1から3の範囲でランダム
 
-    //    float x = RandomFieldX;
-    //    float y = RandomFieldY;
-    //    float w = RandomFieldWidth;
-    //    float h = RandomFieldHeight;
+    while (1)
+    {//生成された足場が天井より高くなる場合終了
+        if (WORLD_LIMIT_UP > RandomFieldY)
+        {
+            break;
+        }
 
-    //    CreateField(x, y, w, h);
-    //}
+        // 乱数生成器を初期化
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dis(1, 3);
+		// 1～3の乱数を生成
+		int random = dis(gen);
+
+        //条件分岐
+		switch (random)
+        {
+		    case 1://左上に生成
+		    {
+				if (WORLD_LIMIT_LEFT < RandomFieldX-1)
+				{
+					RandomFieldX -= 1;
+					RandomFieldY -= 2;
+                    break;
+				}
+		    }
+
+		    case 2://右上に生成
+            {
+				if (WORLD_LIMIT_RIGHT > RandomFieldX + 1)
+				{
+					RandomFieldX += 1;
+					RandomFieldY -= 2;
+					break;
+				}
+              
+            }
+			case 3://真上に生成
+			{
+				RandomFieldY -= 2;
+			}
+
+        }
+
+
+        //描画
+        float x = RandomFieldX;
+        float y = RandomFieldY;
+        float w = RandomFieldWidth;
+        float h = RandomFieldHeight;
+
+        CreateField(x, y, w, h);
+    }
 }
 
 // 終了処理

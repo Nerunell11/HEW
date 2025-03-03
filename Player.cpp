@@ -69,6 +69,13 @@ void UpdatePlayer() // 更新処理
         Player.PositionY = SCREEN_LIMIT_DOWN; // 座標の補正
         Player.VelocityY = 0.0f;
     }
+
+	//プレイヤーが天井より上ならリザルトシーンへ
+    if (Player.PositionY <= WORLD_LIMIT_UP)
+    {
+        SetScene(SCENE_RESULT);
+        //クリアタイムタイマー停止
+    }
 }
 
 void DrawPlayer() // 描画
