@@ -21,7 +21,6 @@
 
 #include	"key.h"	//キー入力処理
 #include    "sound.h"
-//#include	"collision.h"
 
 //ゲームシーンの定義
 enum GAMESCENE
@@ -30,6 +29,7 @@ enum GAMESCENE
 	SCENE_TITLE,		//タイトル画面
 	SCENE_GAME,			//ゲーム
 	SCENE_RESULT,		//リザルト
+	SCENE_GAMEOVER,		//ゲームオーバー
 
 
 	SCENE_MAX			//一番最後のデ―タ(シーンの個数)

@@ -4,6 +4,7 @@
 #include "camera.h"
 #include "common.h" // 共通ヘッダファイル
 #include <iostream> // デバッグ用
+#include"field.h"
 
 OBJECT Player; // プレイヤー構造体
 
@@ -69,6 +70,33 @@ void UpdatePlayer() // 更新処理
         Player.PositionY = SCREEN_LIMIT_DOWN; // 座標の補正
         Player.VelocityY = 0.0f;
     }
+
+    // プレイヤーの足元に足場があるか確認
+    bool isOnPlatform = false;
+    for (int i = 0; i < FIELD_MAX; i++)
+    {
+        if (field[i].Use)
+        {
+            float platformX = field[i].PositionX;
+            float platformY = field[i].PositionY;
+            float platformWidth = field[i].Width;
+            float platformHeight = field[i].Height;
+
+            if (Player.PositionX >= platformX && Player.PositionX <= platformX + platformWidth &&
+                Player.PositionY + 1 == platformY)
+            {
+                isOnPlatform = true;
+                break;
+            }
+        }
+    }
+
+    // 足場がない場合はゲームオーバー
+    if (!isOnPlatform)
+    {
+        SetScene(SCENE_GAMEOVER);
+    }
+
 
 	//プレイヤーが天井より上ならリザルトシーンへ
     if (Player.PositionY <= WORLD_LIMIT_UP)
@@ -148,6 +176,7 @@ void PlayerCheck()
     {
         Player.Mode = PLAYER_IDLE;
     }
+
 }
 
 // 動作

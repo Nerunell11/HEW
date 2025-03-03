@@ -3,6 +3,7 @@
 
 #define		CONIOEX	//<<<<<<<<<main.cpp以外でcommon.hの上に書いておく
 #include	"common.h"	
+#include	"field.h"
 
 
 //プレイヤーのスタート位置
