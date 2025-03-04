@@ -8,6 +8,7 @@ Player.PositionY+-12
 //80は幅の値
 for(int i=0;i<80;i++)
 {
+
       
       for(int j=Player.PositionY-12;j<Player.PositionY+12;j++)
     {
