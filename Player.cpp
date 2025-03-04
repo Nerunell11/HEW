@@ -92,10 +92,10 @@ void UpdatePlayer() // 更新処理
     }
 
     // 足場がない場合はゲームオーバー
-    if (!isOnPlatform)
+    /*if (!isOnPlatform)
     {
         SetScene(SCENE_GAMEOVER);
-    }
+    }*/
 
 
 	//プレイヤーが天井より上ならリザルトシーンへ
