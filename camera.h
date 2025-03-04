@@ -7,8 +7,8 @@
 #include	"Player.h"
 
 //ƒJƒƒ‰‚Ì‰ŠúˆÊ’u
-#define 	CAMERA_START_POSX	(PLAYER_START_POSX)
-#define 	CAMERA_START_POSY	(PLAYER_START_POSY) // c•`‰æ”ÍˆÍ‚Í24
+#define 	CAMERA_START_POSX	(WORLD_LIMIT_UP)
+#define 	CAMERA_START_POSY	(WORLD_LIMIT_DOWN-24) // c•`‰æ”ÍˆÍ‚Í24
 
 //ƒJƒƒ‰‚Ì•‚Æ‚‚³
 #define CAMERA_WIDTH  (80)
@@ -26,7 +26,6 @@ enum CAMERAMODE
 void	InitCamera();
 void	FinalizeCamera();
 void	UpdateCamera();
-void	DrawCamera();
 
 void	CameraCheck();
 void	CameraMove();

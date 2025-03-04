@@ -4,6 +4,7 @@
 #include "camera.h"
 
 
+
 //グローバル変数
 //タイマー
 std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
@@ -47,16 +48,23 @@ void FinalizeGame()
 
 void UpdateGame()
 {
-    
+    //プレイヤーが三段登ったら呼び出す
+   /* if (PlayerUpCount != 0 && PlayerUpCount % 3 == 0)
+    {
+        CameraCheck();
+    }*/
+
     UpdatePlayer();
+
+    
+
     UpdateCamera();
+
+   
+
     UpdateField();
 
-	//プレイヤーが三段登ったら呼び出す
-    if (PlayerUpCount != 0 && PlayerUpCount % 3 == 0)
-    {
-		CameraCheck();
-    }
+	
 
     // キー入力のチェック
     //if (IsKeyRelease(PPK_ENTER))
