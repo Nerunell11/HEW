@@ -47,7 +47,7 @@ void DrawCamera()
 }
 
 void CameraCheck()
-{
+{//プレイヤーが三段登ったら呼び出す
     camera.VelocityX = 0; // 移動量リセット
     camera.VelocityY = 0;
 
@@ -56,25 +56,25 @@ void CameraCheck()
     if (IsKeyRelease(PPK_W) || IsKeyRelease(PPK_UP))
     {
         camera.Mode = CAMERA_MOVE;
-        camera.PositionY -= 2.0f;
+        camera.PositionY -= 6.0f;
     }
     // 左方向
     else if (IsKeyRelease(PPK_A) || IsKeyRelease(PPK_LEFT))
     {
         camera.Mode = CAMERA_MOVE;
-        camera.PositionY -= 2.0f;
+        camera.PositionY -= 6.0f;
     }
     // 右方向
     else if (IsKeyRelease(PPK_D) || IsKeyRelease(PPK_RIGHT))
     {
         camera.Mode = CAMERA_MOVE;
-        camera.PositionY -= 2.0f;
+        camera.PositionY -= 6.0f;
     }
     // 下方向
     else if (IsKeyRelease(PPK_S) || IsKeyRelease(PPK_DOWN))
     {
         camera.Mode = CAMERA_MOVE;
-        camera.PositionY += 2.0f;
+        camera.PositionY += 6.0f;
         std::cout << "Move down\n"; // デバッグ用
     }
     // 何も押されていない
