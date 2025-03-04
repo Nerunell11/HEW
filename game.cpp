@@ -3,6 +3,10 @@
 #include "field.h"
 #include "camera.h"
 
+
+static char soundfile[] = "asset\\popcorn2.mp3";
+
+
 //グローバル変数
 //タイマー
 std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
@@ -16,6 +20,9 @@ void InitGame()
 
     // タイマーの開始
     startTime = std::chrono::high_resolution_clock::now();
+
+    // BGMの再生
+    StartSound(&soundfile[0], true);
    
 
     InitPlayer();
@@ -28,6 +35,9 @@ void FinalizeGame()
     // タイマーの停止
     endTime = std::chrono::high_resolution_clock::now();
     elapsedTime = endTime - startTime;
+
+    // BGMの停止
+    StopSound();
 
     FinalizePlayer();
     FinalizeField();

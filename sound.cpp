@@ -8,8 +8,14 @@ bool Repeat = false;
 int  SeID[SE_MAX];
 static char SEfile[][256] =
 { 
-	"asset\\bgm.mp3",
-	"asset\\bgm.mp3",
+	"asset\\popcorn1.mp3",
+	"asset\\popcorn1.mp3",
+	"asset\\popcorn2.mp3",
+	"asset\\popcorn2.mp3",
+	"asset\\popcorn3.mp3",
+	"asset\\popcorn3.mp3",
+	"asset\\letsgo!.mp3",
+	"asset\\letsgo!.mp3",
 };
 
 void  UpdateSound()

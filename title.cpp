@@ -3,7 +3,7 @@
 
 #include	"title.h"
 
-static char soundfile[] = "asset\\bgm.mp3";
+static char soundfile[] = "asset\\popcorn1.mp3";
 
 void	InitTitle()
 {
@@ -24,6 +24,7 @@ void	UpdateTitle()
 		//シーンの切り替え（ゲームへ切り替える）
 		SetScene(SCENE_GAME);
 	}
+
 }
 void	DrawTitle()
 {
