@@ -4,14 +4,15 @@
 #include "camera.h"
 
 
-static char soundfile[] = "asset\\popcorn2.mp3";
-
-
 //グローバル変数
 //タイマー
 std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
 std::chrono::time_point<std::chrono::high_resolution_clock> endTime;
 std::chrono::duration<double> elapsedTime;
+
+//BGM
+static char soundfile[] = "asset\\popcorn2.mp3";
+
 
 void InitGame()
 {
@@ -50,14 +51,19 @@ void UpdateGame()
     UpdatePlayer();
     UpdateCamera();
     UpdateField();
-  
-    // キー入力のチェック
-    if (IsKeyRelease(PPK_ENTER))
+
+	//プレイヤーが三段登ったら呼び出す
+    if (PlayerUpCount != 0 && PlayerUpCount % 3 == 0)
     {
-        // シーンの切り替え（リザルトシーンへ）
-        SetScene(SCENE_RESULT);
+		CameraCheck();
     }
-    
+
+    // キー入力のチェック
+    //if (IsKeyRelease(PPK_ENTER))
+    //{
+    //    // シーンの切り替え（リザルトシーンへ）
+    //    SetScene(SCENE_RESULT);
+    //}
 }
 
 void DrawGame()

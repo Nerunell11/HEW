@@ -4,9 +4,14 @@
 #include "camera.h"
 #include "common.h" // 共通ヘッダファイル
 #include <iostream> // デバッグ用
-#include"field.h"
 
 OBJECT Player; // プレイヤー構造体
+
+
+int PlayerUpCount = 0; //プレイヤーが上昇した回数
+
+
+
 
 void InitPlayer() // 初期化
 {
@@ -147,22 +152,25 @@ void PlayerCheck()
         Player.Mode = PLAYER_MOVE;
         Player.PositionY -= 2.0f;
         std::cout << "Move up\n"; // デバッグ用
+		PlayerUpCount++;
     }
     // 左方向
     else if (IsKeyRelease(PPK_A) || IsKeyRelease(PPK_LEFT))
     {
         Player.Mode = PLAYER_MOVE;
-        Player.PositionX -= 1.0f;
+        Player.PositionX -= 3.0f;
 		Player.PositionY -= 2.0f;
         std::cout << "Move left\n"; // デバッグ用
+        PlayerUpCount++;
     }
     // 右方向
     else if (IsKeyRelease(PPK_D) || IsKeyRelease(PPK_RIGHT))
     {
         Player.Mode = PLAYER_MOVE;
-        Player.PositionX += 1.0f;
+        Player.PositionX += 3.0f;
 		Player.PositionY -= 2.0f;
         std::cout << "Move right\n"; // デバッグ用
+        PlayerUpCount++;
     }
     // 下方向
     else if (IsKeyRelease(PPK_S) || IsKeyRelease(PPK_DOWN))
@@ -170,6 +178,7 @@ void PlayerCheck()
         Player.Mode = PLAYER_MOVE;
         Player.PositionY += 2.0f;
         std::cout << "Move down\n"; // デバッグ用
+        PlayerUpCount--;
     }
     // 何も押されていない
     else

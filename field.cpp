@@ -65,9 +65,9 @@ void InitField()
         {
 		    case 1://ç∂è„Ç…ê∂ê¨
 		    {
-				if (WORLD_LIMIT_LEFT < RandomFieldX-1)
+				if (WORLD_LIMIT_LEFT < RandomFieldX-3)
 				{
-					RandomFieldX -= 1;
+					RandomFieldX -= 3;
 					RandomFieldY -= 2;
                     break;
 				}
@@ -75,9 +75,9 @@ void InitField()
 
 		    case 2://âEè„Ç…ê∂ê¨
             {
-				if (WORLD_LIMIT_RIGHT > RandomFieldX + 1)
+				if (WORLD_LIMIT_RIGHT > RandomFieldX + 3)
 				{
-					RandomFieldX += 1;
+					RandomFieldX += 3;
 					RandomFieldY -= 2;
 					break;
 				}

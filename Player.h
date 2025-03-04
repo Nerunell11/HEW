@@ -1,14 +1,18 @@
 #pragma once	//ヘッダーファイル二重定義の防止
 
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #define		CONIOEX	//<<<<<<<<<main.cpp以外でcommon.hの上に書いておく
 #include	"common.h"	
 #include	"field.h"
 
-
 //プレイヤーのスタート位置
 #define	PLAYER_START_POSX	(SCREEN_LIMIT_RIGHT / 2)
 #define PLAYER_START_POSY	(WORLD_LIMIT_DOWN-1)
+
+extern int PlayerUpCount;
+
 
 //プレイヤーの状態
 enum PLAYERMODE
@@ -32,3 +36,4 @@ void	PlayerMove();		//プレイヤーの移動
 
 OBJECT* GetPlayer();		//プレイヤー構造体の取得
 
+#endif
