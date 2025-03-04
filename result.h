@@ -4,6 +4,7 @@
 
 #define CONIOEX
 #include  "common.h"
+#include  "sound.h"
 
 //プロトタイプ宣言
 void	InitResult();

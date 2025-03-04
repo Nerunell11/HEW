@@ -3,15 +3,22 @@
 #include	"game.h"	//タイマー用
 #include	"result.h"
 
+
+static char soundfile[] = "asset\\popcorn3.mp3";
+
 void	InitResult()
 {
 	//画面のクリア
 	clrscr();
 
+	// BGMの再生
+	StartSound(&soundfile[0], true);
+
 }
 void	FinalizeResult()
 {
-
+	// BGMの停止
+	StopSound();
 }
 void	UpdateResult()
 {
