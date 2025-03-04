@@ -17,5 +17,4 @@ void	DrawField();
 
 void	CreateField(float x, float y, float w, float h);
 
-OBJECT* GetField();
 

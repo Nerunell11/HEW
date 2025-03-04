@@ -9,7 +9,9 @@
 
 //プレイヤーのスタート位置
 #define	PLAYER_START_POSX	(SCREEN_LIMIT_RIGHT / 2)
-#define PLAYER_START_POSY	(WORLD_LIMIT_DOWN-1)
+#define PLAYER_START_POSY	(WORLD_LIMIT_DOWN-1)							//(abs(WORLD_LIMIT_UP + WORLD_LIMIT_DOWN))
+
+
 
 extern int PlayerUpCount;
 
@@ -29,11 +31,10 @@ enum PLAYERMODE
 void	InitPlayer();		//初期化
 void	FinalizePlayer();	//終了処理
 void	UpdatePlayer();		//更新処理
-void	DrawPlayer();		//描画
+void	DrawPlayer();		//描画処理
 
 void	PlayerCheck();		
 void	PlayerMove();		//プレイヤーの移動
 
-OBJECT* GetPlayer();		//プレイヤー構造体の取得
 
 #endif

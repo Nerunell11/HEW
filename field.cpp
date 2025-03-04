@@ -39,7 +39,7 @@ void InitField()
 
 	// ƒ‰ƒ“ƒ_ƒ€‚È‘«ê‚ğì¬
 
-    int RandomFieldX = 40;
+    int RandomFieldX = 39;
 	int RandomFieldY = 24;
     int RandomFieldWidth = 1;
     int RandomFieldHeight = 1;
@@ -65,9 +65,9 @@ void InitField()
         {
 		    case 1://¶ã‚É¶¬
 		    {
-				if (WORLD_LIMIT_LEFT < RandomFieldX-3)
+				if (WORLD_LIMIT_LEFT < RandomFieldX-4)
 				{
-					RandomFieldX -= 3;
+					RandomFieldX -= 4;
 					RandomFieldY -= 2;
                     break;
 				}
@@ -75,9 +75,9 @@ void InitField()
 
 		    case 2://‰Eã‚É¶¬
             {
-				if (WORLD_LIMIT_RIGHT > RandomFieldX + 3)
+				if (WORLD_LIMIT_RIGHT > RandomFieldX + 4)
 				{
-					RandomFieldX += 3;
+					RandomFieldX += 4;
 					RandomFieldY -= 2;
 					break;
 				}
@@ -118,7 +118,7 @@ void DrawField()
 {
     OBJECT* camera = GetCamera();
     float cameraLeft = camera->PositionX;
-    float cameraRight = camera->PositionX + CAMERA_WIDTH;
+    float cameraRight =CAMERA_WIDTH;
     float cameraTop = camera->PositionY;
     float cameraBottom = camera->PositionY + CAMERA_HEIGHT;
 

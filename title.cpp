@@ -12,10 +12,12 @@ void	InitTitle()
 	//タイトルサウンド
 	StartSound(&soundfile[0], true);
 }
+
 void	FinalizeTitle()
 {
 	StopSound();
 }
+
 void	UpdateTitle()
 {
 	//キー入力待ち
@@ -26,6 +28,7 @@ void	UpdateTitle()
 	}
 
 }
+
 void	DrawTitle()
 {
 	//文字の表示色を変更

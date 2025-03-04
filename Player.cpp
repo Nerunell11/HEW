@@ -49,10 +49,10 @@ void UpdatePlayer() // 更新処理
             PlayerMove();
             break;
         case PLAYER_JUMP:
-            // PlayerJump();
             break;
         }
     }
+
 
     // 画面外チェック
     if ((int)Player.PositionX < SCREEN_LIMIT_LEFT)
@@ -158,7 +158,7 @@ void PlayerCheck()
     else if (IsKeyRelease(PPK_A) || IsKeyRelease(PPK_LEFT))
     {
         Player.Mode = PLAYER_MOVE;
-        Player.PositionX -= 3.0f;
+        Player.PositionX -= 4.0f;
 		Player.PositionY -= 2.0f;
         std::cout << "Move left\n"; // デバッグ用
         PlayerUpCount++;
@@ -167,7 +167,7 @@ void PlayerCheck()
     else if (IsKeyRelease(PPK_D) || IsKeyRelease(PPK_RIGHT))
     {
         Player.Mode = PLAYER_MOVE;
-        Player.PositionX += 3.0f;
+        Player.PositionX += 4.0f;
 		Player.PositionY -= 2.0f;
         std::cout << "Move right\n"; // デバッグ用
         PlayerUpCount++;
