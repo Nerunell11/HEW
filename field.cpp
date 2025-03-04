@@ -137,11 +137,11 @@ void DrawField()
                 {
                     if (posy + y >= cameraTop && posy + y <= cameraBottom)
                     {
-                        gotoxy((int)posx, (int)(posy + y));
                         for (int x = 0; x < field[i].Width; x++)
                         {
                             if (posx + x >= cameraLeft && posx + x <= cameraRight)
                             {
+                                gotoxy((int)(posx + x), (int)(posy + y));
                                 std::cout << "=";
                             }
                         }
