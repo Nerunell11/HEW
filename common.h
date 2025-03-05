@@ -42,13 +42,13 @@ enum GAMESCENE
 // 
 //画面の端を表す座標を定義 値は適当
 //デバッグ時のワールド上限もこれ
-#define	SCREEN_LIMIT_UP		(1)
+#define	SCREEN_LIMIT_UP		(-100)
 #define	SCREEN_LIMIT_DOWN	(24)
 #define	SCREEN_LIMIT_LEFT	(1)
 #define	SCREEN_LIMIT_RIGHT	(80)
 
 //ワールドの端を表す座標を定義
-#define WORLD_LIMIT_UP		(1)
+#define WORLD_LIMIT_UP		(-76)
 #define WORLD_LIMIT_DOWN    (24) 
 #define WORLD_LIMIT_LEFT	(1)
 #define WORLD_LIMIT_RIGHT	(79)

@@ -50,10 +50,11 @@ void FinalizeGame()
 void UpdateGame()
 {
     //プレイヤーが三段登ったら呼び出す
-   /* if (PlayerUpCount != 0 && PlayerUpCount % 3 == 0)
+    if (PlayerUpCount != 0 && PlayerUpCount % 3 == 0)
     {
+		std::cout << "CameraMove\n";
         CameraCheck();
-    }*/
+    }
 
     UpdatePlayer();
 

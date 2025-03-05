@@ -109,6 +109,7 @@ void UpdatePlayer() // 更新処理
         SetScene(SCENE_RESULT);
         //クリアタイムタイマー停止
     }
+
 }
 
 

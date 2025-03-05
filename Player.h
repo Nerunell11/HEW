@@ -8,7 +8,7 @@
 #include	"field.h"
 
 //プレイヤーのスタート位置
-#define	PLAYER_START_POSX	(SCREEN_LIMIT_RIGHT / 2)
+#define	PLAYER_START_POSX	(WORLD_LIMIT_RIGHT / 2)
 #define PLAYER_START_POSY	(WORLD_LIMIT_DOWN-1)							//(abs(WORLD_LIMIT_UP + WORLD_LIMIT_DOWN))
 
 
