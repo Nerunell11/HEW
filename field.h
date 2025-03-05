@@ -13,7 +13,6 @@ extern OBJECT field[FIELD_MAX];
 void	InitField();
 void	FinalizeField();
 void	UpdateField();
-void	DrawField();
 
 void	CreateField(float x, float y, float w, float h);
 

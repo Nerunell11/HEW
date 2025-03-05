@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "field.h"
 #include "camera.h"
+#include "draw.h"
 
 
 

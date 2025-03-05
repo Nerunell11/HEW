@@ -113,44 +113,6 @@ void UpdateField()
 
 }
 
-// 描画処理
-void DrawField()
-{
-    OBJECT* camera = GetCamera();
-    float cameraLeft = camera->PositionX;
-    float cameraRight =CAMERA_WIDTH;
-    float cameraTop = camera->PositionY;
-    float cameraBottom = camera->PositionY + CAMERA_HEIGHT;
-
-    for (int i = 0; i < FIELD_MAX; i++)
-    {
-        if (field[i].Use == true)
-        {
-            float posx = field[i].PositionX;
-            float posy = field[i].PositionY;
-
-            // カメラの範囲内にあるオブジェクトのみ描画
-            if (posx + field[i].Width >= cameraLeft && posx <= cameraRight &&
-                posy + field[i].Height >= cameraTop && posy <= cameraBottom)
-            {
-                for (int y = 0; y < field[i].Height; y++)
-                {
-                    if (posy + y >= cameraTop && posy + y <= cameraBottom)
-                    {
-                        for (int x = 0; x < field[i].Width; x++)
-                        {
-                            if (posx + x >= cameraLeft && posx + x <= cameraRight)
-                            {
-                                gotoxy((int)(posx + x), (int)(posy + y));
-                                std::cout << "=";
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
 
 // 足場の作成
 void CreateField(float x, float y, float w, float h)

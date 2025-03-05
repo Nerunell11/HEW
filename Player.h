@@ -31,10 +31,12 @@ enum PLAYERMODE
 void	InitPlayer();		//初期化
 void	FinalizePlayer();	//終了処理
 void	UpdatePlayer();		//更新処理
-void	DrawPlayer();		//描画処理
+
 
 void	PlayerCheck();		
 void	PlayerMove();		//プレイヤーの移動
+
+OBJECT* GetPlayer();		//プレイヤーの位置を取得
 
 
 #endif
