@@ -16,9 +16,9 @@ float MapData[][4] =
    {WORLD_LIMIT_LEFT, WORLD_LIMIT_DOWN, 80, 1}, // 地面
 
 
-   {WORLD_LIMIT_RIGHT, 1, 1, 24},               // 右壁
-   {WORLD_LIMIT_LEFT, 1, 1, 24},                // 左壁
-    {-1, -1, -1, -1}                             // データの終端
+   {WORLD_LIMIT_RIGHT, 1, 1,24}, // 右壁
+   {WORLD_LIMIT_LEFT, 1, 1,24},  // 左壁
+   {-1, -1, -1, -1}                             // データの終端
 };
 
 // 初期化
