@@ -10,6 +10,8 @@ OBJECT Player; // プレイヤー構造体
 
 int PlayerUpCount = 0; //プレイヤーが上昇した回数
 
+int PlayerUptime = 0; //プレイヤーが登った段
+
 
 
 
@@ -27,7 +29,8 @@ void InitPlayer() // 初期化
     Player.Width = 0.8f;
     Player.Height = 0.8f;
 
-    std::cout << "Player initialized at (" << Player.PositionX << ", " << Player.PositionY << ")\n"; // デバッグ用
+    PlayerUpCount = 0;
+    PlayerUptime = 0;
 }
 
 void FinalizePlayer() // 終了処理
@@ -55,24 +58,24 @@ void UpdatePlayer() // 更新処理
 
 
     // 画面外チェック
-    if ((int)Player.PositionX < SCREEN_LIMIT_LEFT)
+    if ((int)Player.PositionX < WORLD_LIMIT_LEFT)
     {
-        Player.PositionX = SCREEN_LIMIT_LEFT; // 座標の補正
+        Player.PositionX = WORLD_LIMIT_LEFT; // 座標の補正
         Player.VelocityX = 0.0f;
     }
-    else if ((int)Player.PositionX > SCREEN_LIMIT_RIGHT)
+    else if ((int)Player.PositionX > WORLD_LIMIT_RIGHT)
     {
-        Player.PositionX = SCREEN_LIMIT_RIGHT; // 座標の補正
+        Player.PositionX = WORLD_LIMIT_RIGHT; // 座標の補正
         Player.VelocityX = 0.0f;
     }
-    if (Player.PositionY < SCREEN_LIMIT_UP)
+    if (Player.PositionY < WORLD_LIMIT_UP)
     {
-        Player.PositionY = SCREEN_LIMIT_UP; // 座標の補正
+        Player.PositionY = WORLD_LIMIT_UP; // 座標の補正
         Player.VelocityY = 0.0f;
     }
-    else if (Player.PositionY > SCREEN_LIMIT_DOWN)
+    else if (Player.PositionY > WORLD_LIMIT_DOWN)
     {
-        Player.PositionY = SCREEN_LIMIT_DOWN; // 座標の補正
+        Player.PositionY = WORLD_LIMIT_DOWN; // 座標の補正
         Player.VelocityY = 0.0f;
     }
 
@@ -84,11 +87,8 @@ void UpdatePlayer() // 更新処理
         {
             float platformX = field[i].PositionX;
             float platformY = field[i].PositionY;
-            float platformWidth = field[i].Width;
-            float platformHeight = field[i].Height;
 
-            if (Player.PositionX >= platformX && Player.PositionX <= platformX + platformWidth &&
-                Player.PositionY + 1 == platformY)
+            if (Player.PositionX== platformX &&Player.PositionY + 1 == platformY)
             {
                 isOnPlatform = true;
                 break;
@@ -97,18 +97,20 @@ void UpdatePlayer() // 更新処理
     }
 
     // 足場がない場合はゲームオーバー
-    /*if (!isOnPlatform)
+    if (!isOnPlatform)
     {
         SetScene(SCENE_GAMEOVER);
-    }*/
+    }
 
 
 	//プレイヤーが天井より上ならリザルトシーンへ
-    if (Player.PositionY <= WORLD_LIMIT_UP)
+    if (PlayerUptime>=WORLD_LIMIT_HEIGHT)
     {
         SetScene(SCENE_RESULT);
         //クリアタイムタイマー停止
     }
+
+    //std::cout << "Player initialized at (" << Player.PositionX << ", " << Player.PositionY << ")\n"; // デバッグ用
 
 }
 
@@ -126,8 +128,9 @@ void PlayerCheck()
     {
         Player.Mode = PLAYER_MOVE;
         Player.PositionY -= 2.0f;
-        std::cout << "Move up\n"; // デバッグ用
+        //std::cout << "Move up\n"; // デバッグ用
 		PlayerUpCount++;
+        PlayerUptime += 2;
     }
     // 左方向
     else if (IsKeyRelease(PPK_A) || IsKeyRelease(PPK_LEFT))
@@ -135,8 +138,9 @@ void PlayerCheck()
         Player.Mode = PLAYER_MOVE;
         Player.PositionX -= 4.0f;
 		Player.PositionY -= 2.0f;
-        std::cout << "Move left\n"; // デバッグ用
+        //std::cout << "Move left\n"; // デバッグ用
         PlayerUpCount++;
+        PlayerUptime += 2;
     }
     // 右方向
     else if (IsKeyRelease(PPK_D) || IsKeyRelease(PPK_RIGHT))
@@ -144,16 +148,18 @@ void PlayerCheck()
         Player.Mode = PLAYER_MOVE;
         Player.PositionX += 4.0f;
 		Player.PositionY -= 2.0f;
-        std::cout << "Move right\n"; // デバッグ用
+        //std::cout << "Move right\n"; // デバッグ用
         PlayerUpCount++;
+        PlayerUptime += 2;
     }
     // 下方向
     else if (IsKeyRelease(PPK_S) || IsKeyRelease(PPK_DOWN))
     {
         Player.Mode = PLAYER_MOVE;
         Player.PositionY += 2.0f;
-        std::cout << "Move down\n"; // デバッグ用
+        //std::cout << "Move down\n"; // デバッグ用
         PlayerUpCount--;
+        PlayerUptime -= 2;
     }
     // 何も押されていない
     else

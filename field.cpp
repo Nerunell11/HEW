@@ -12,12 +12,9 @@ OBJECT field[FIELD_MAX];
 // フィールド二次元配列
 float MapData[][4] =
 {
-   {WORLD_LIMIT_LEFT, WORLD_LIMIT_UP, 80, 1},   // 天井
-   {WORLD_LIMIT_LEFT, WORLD_LIMIT_DOWN, 80, 1}, // 地面
+   //{WORLD_LIMIT_LEFT, WORLD_LIMIT_UP, 80, 1},   // 天井
+   //{WORLD_LIMIT_LEFT, WORLD_LIMIT_DOWN, 80, 1}, // 地面
 
-
-   {WORLD_LIMIT_RIGHT, 1, 1,24}, // 右壁
-   {WORLD_LIMIT_LEFT, 1, 1,24},  // 左壁
    {-1, -1, -1, -1}                             // データの終端
 };
 
@@ -31,27 +28,39 @@ void InitField()
 
     // 足場を作成
     int i = 0;
-    while (MapData[i][0] != -1)
+
+    for (int x = 0; x < 80; x++)
     {
-        CreateField(MapData[i][0], MapData[i][1], MapData[i][2], MapData[i][3]);
-        i++;
+
+        //天井
+        CreateField(x, WORLD_LIMIT_UP, 2, 1);
+
+        //床
+        CreateField(x, WORLD_LIMIT_DOWN, 0, 1);
     }
+
+    for (int y = 0; y <WORLD_LIMIT_HEIGHT; y++)
+    {
+		//左壁
+        CreateField(WORLD_LIMIT_LEFT, 24-y, 1, 1);
+       
+		//右壁
+        CreateField(WORLD_LIMIT_RIGHT, 24-y, 1, 1);
+    }
+  
 
 	// ランダムな足場を作成
 
     int RandomFieldX = 39;
-	int RandomFieldY = 24;
-    int RandomFieldWidth = 1;
+	int RandomFieldY = WORLD_LIMIT_DOWN;
+    int RandomFieldWidth = 0;
     int RandomFieldHeight = 1;
 
 
 
     while (1)
     {//生成された足場が天井より高くなる場合終了
-        if (WORLD_LIMIT_UP > RandomFieldY)
-        {
-            break;
-        }
+        
 
         // 乱数生成器を初期化
         std::random_device rd;
@@ -97,6 +106,11 @@ void InitField()
         float w = RandomFieldWidth;
         float h = RandomFieldHeight;
 
+        if (WORLD_LIMIT_UP > RandomFieldY)
+        {
+            break;
+        }
+
         CreateField(x, y, w, h);
     }
 }
@@ -121,6 +135,7 @@ void CreateField(float x, float y, float w, float h)
     {
         if (field[i].Use == false)
         {
+           
             field[i].Use = true;
             field[i].PositionX = x;
             field[i].PositionY = y;
@@ -130,6 +145,18 @@ void CreateField(float x, float y, float w, float h)
         }
     }
 }
+
+void DownField(float y)
+{
+    for (int i = 0; i < FIELD_MAX; i++)
+    {
+        if (field[i].Use == true)
+        {
+            field[i].PositionY += y;
+        }
+    }
+}
+
 
 OBJECT* GetField()
 {

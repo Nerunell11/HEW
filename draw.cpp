@@ -16,34 +16,45 @@ void DrawInit()
 void DrawField()
 {
 
+
+   
     OBJECT* camera = GetCamera(); // カメラの位置を取得
     OBJECT* field = GetField(); // フィールドの位置を取得
 
-        for (int i = FIELD_MAX-1; i >= 0; i--)
+    for (int i = FIELD_MAX - 1; i >= 0; i--)
+    {
+        if (field[i].Use == true)
         {
-            if (field[i].Use == true)
+            float posx = field[i].PositionX;
+            float posy = field[i].PositionY;
+            if ((posy >= 0 && posy <= 24) && (posx >= 0 && posx <= 79))
             {
-                float posx = field[i].PositionX;
-                float posy = field[i].PositionY;
-                
+                gotoxy((int)(posx), (int)(posy));
 
-                for (int y = field[i].Height - 1; y >= 0; y--)
+                switch (int(field[i].Width))
                 {
-                    // 天井が描画されないようにする
-                    /*if (posy + y < 0)
-                    {
-                        continue;
-                    }*/
-
-                    for (int x = 0; x < field[i].Width; x++)
-                    {
-                        gotoxy((int)(posx + x), (int)(posy + y+ ScrollY));
-                        std::cout << "=";
-                    }
+                case 0:
+					textcolor(WHITE);
+                    break;
+				case 1://壁
+					textcolor(WHITE);
+                    break;
+                case 2:
+                    textcolor(YELLOW);
+                    break;
+                default:
+                    break;
                 }
-            }
-        }
 
+                
+                std::cout << "=";
+            }
+           
+        }
+    }
+
+   
+    textcolor(WHITE);
 }
 
 void DrawPlayer() // 描画
@@ -52,21 +63,23 @@ void DrawPlayer() // 描画
     OBJECT* Player = GetPlayer(); // プレイヤーの位置を取得
 
  
-        // 前回のプレイヤーを消去
-        gotoxy(Player->PositionXOld, Player->PositionYOld+ScrollY);
-        std::cout << " "; // 設定した座標にスペースを表示して消去する
+    // 前回のプレイヤーを消去
+    gotoxy(Player->PositionXOld, Player->PositionYOld);
+    std::cout << " "; // 設定した座標にスペースを表示して消去する
 
-        // 文字の表示色を変更
-        textcolor(RED); // 文字を赤に変更
+    // 文字の表示色を変更
+    textcolor(RED); // 文字を赤に変更
 
-        // 現在のプレイヤーを表示
-        gotoxy(Player->PositionX, Player->PositionY+ScrollY);
-        std::cout << "P"; // とりあえずP
+    // 現在のプレイヤーを表示
+    gotoxy(Player->PositionX, Player->PositionY);
+    std::cout << "P"; // とりあえずP
    
-        Player->PositionXOld = Player->PositionX; // 現在の座標を保存
-        Player->PositionYOld = Player->PositionY;
+    Player->PositionXOld = Player->PositionX; // 現在の座標を保存
+    Player->PositionYOld = Player->PositionY;
     
 }
+
+//Drawの中で変数をいじるな
 
 void DrawScroll()
 {
@@ -76,12 +89,17 @@ void DrawScroll()
     {
 		do
         {
-          
+			OBJECT* Player = GetPlayer(); // プレイヤーの位置を取得
 			OBJECT* camera = GetCamera(); // カメラの位置を取得
+
             clrscr();
-			std::cout << "CameraMove\n";//デバッグ用
+
+			//std::cout << "CameraMove\n";//デバッグ用
 			ScrollY += 6;
 			camera->PositionY -= 6.0f;
+			Player->PositionY += 6.0f;
+
+			DownField(6.0f);
 			
 			PlayerUpCount = 0;
 		} while (PlayerUpCount!=0);
