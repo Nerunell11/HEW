@@ -9,7 +9,7 @@
 
 //プレイヤーのスタート位置
 #define	PLAYER_START_POSX	(WORLD_LIMIT_RIGHT / 2)
-#define PLAYER_START_POSY	(WORLD_LIMIT_DOWN-1)							//(abs(WORLD_LIMIT_UP + WORLD_LIMIT_DOWN))
+#define PLAYER_START_POSY	(23)							//(abs(WORLD_LIMIT_UP + WORLD_LIMIT_DOWN))
 
 
 
