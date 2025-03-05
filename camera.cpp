@@ -28,8 +28,6 @@ void UpdateCamera()
 
 void CameraCheck()
 {//プレイヤーが三段登ったら呼び出す
-    camera.VelocityX = 0; // 移動量リセット
-    camera.VelocityY = 0;
 
     camera.Mode = CAMERA_MOVE;
     camera.PositionY -= 6.0f;
