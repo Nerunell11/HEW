@@ -11,4 +11,4 @@
 void	DrawField();
 void	DrawPlayer();		//•`‰æˆ—
 void	DrawScroll();		//ƒJƒƒ‰•`‰æˆ—
-
+void	DrawInit();			//•`‰æ‰Šú‰»

@@ -16,11 +16,12 @@ std::chrono::duration<double> elapsedTime;
 static char soundfile[] = "asset\\popcorn2.mp3";
 
 
+
 void InitGame()
 {
     // 画面のクリア
     clrscr();
-
+  
     // タイマーの開始
     startTime = std::chrono::high_resolution_clock::now();
 
@@ -31,6 +32,8 @@ void InitGame()
     InitPlayer();
     InitField();
     InitCamera();
+	DrawInit();
+
 }
 
 void FinalizeGame()

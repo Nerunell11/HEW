@@ -29,5 +29,6 @@ void	UpdateCamera();
 
 void	CameraCheck();
 void	CameraMove();
+
 OBJECT* GetCamera();
 

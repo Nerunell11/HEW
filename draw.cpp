@@ -2,10 +2,24 @@
 
 int ScrollY = 0; // スクロール量
 
+
+
+// 描画初期化
+void DrawInit()
+{
+    ScrollY = 0;
+}
+
+
+
 // 描画処理
 void DrawField()
 {
-        for (int i = FIELD_MAX - 1; i >= 0; i--)
+
+    OBJECT* camera = GetCamera(); // カメラの位置を取得
+    OBJECT* field = GetField(); // フィールドの位置を取得
+
+        for (int i = FIELD_MAX-1; i >= 0; i--)
         {
             if (field[i].Use == true)
             {
@@ -16,14 +30,14 @@ void DrawField()
                 for (int y = field[i].Height - 1; y >= 0; y--)
                 {
                     // 天井が描画されないようにする
-                    if (posy + y < 0)
+                    /*if (posy + y < 0)
                     {
                         continue;
-                    }
+                    }*/
 
                     for (int x = 0; x < field[i].Width; x++)
                     {
-                        gotoxy((int)(posx + x), (int)(posy + y + ScrollY));
+                        gotoxy((int)(posx + x), (int)(posy + y+ ScrollY));
                         std::cout << "=";
                     }
                 }
@@ -62,9 +76,13 @@ void DrawScroll()
     {
 		do
         {
+          
+			OBJECT* camera = GetCamera(); // カメラの位置を取得
             clrscr();
 			std::cout << "CameraMove\n";//デバッグ用
 			ScrollY += 6;
+			camera->PositionY -= 6.0f;
+			
 			PlayerUpCount = 0;
 		} while (PlayerUpCount!=0);
     }
