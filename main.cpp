@@ -39,11 +39,11 @@ bool HEWCleanup();
 //*****************************************************************************
 void WindowConsoleInitialize(void);		// ウィンドウ情報の初期化
 
-#ifdef _DEBUG	//_DEBUGが定義されている場合（debugモード時）
+//#ifdef _DEBUG	//_DEBUGが定義されている場合（debugモード時）
 
 	void DispFPS(void);	// デバッグ時のみ有効な関数扱いとなる
 
-#endif
+//#endif
 
 void	Init();
 void	Uninit();
@@ -131,9 +131,10 @@ int main(void)
 			//処理回数カウンター
 			frameCount++;
 			// デバッグ時のみ関数が呼ばれる
-#ifdef _DEBUG
+			
+//#ifdef _DEBUG
 			DispFPS();
-#endif
+//#endif
 		}
 	} while (!inport(PK_ESC)); // ESC押すまでループ
 
@@ -288,7 +289,7 @@ GAMESCENE GetScene()
 	return g_Scene;
 }
 
-#ifdef _DEBUG
+//#ifdef _DEBUG
 // =============================================================================
 // デバッグ表示
 // =============================================================================
@@ -303,4 +304,4 @@ void DispFPS(void)
 	// 色設定(もとに戻す)
 	textcolor(WHITE);
 }
-#endif
+//#endif
