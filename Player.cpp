@@ -155,11 +155,11 @@ void PlayerCheck()
     // 下方向
     else if (IsKeyRelease(PPK_S) || IsKeyRelease(PPK_DOWN))
     {
-        Player.Mode = PLAYER_MOVE;
-        Player.PositionY += 2.0f;
+        //Player.Mode = PLAYER_MOVE;
+        //Player.PositionY += 2.0f;
         //std::cout << "Move down\n"; // デバッグ用
-        PlayerUpCount--;
-        PlayerUptime -= 2;
+       /* PlayerUpCount--;
+        PlayerUptime -= 2;*/
     }
     // 何も押されていない
     else
